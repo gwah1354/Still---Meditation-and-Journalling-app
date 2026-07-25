@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { getAllEntries } from "../lib/journalStore";
 import { useStreak } from "../hooks/useStreak";
 import { BookOpen, Flame, Sparkles, TrendingUp } from "lucide-react";
