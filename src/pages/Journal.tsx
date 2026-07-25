@@ -15,7 +15,6 @@ import {
   getAllEntries,
   getEntry,
   saveEntry,
-  type JournalEntry,
 } from "../lib/journalStore";
 import { useStreak } from "../hooks/useStreak";
 
@@ -28,8 +27,6 @@ export default function Journal() {
   });
   const [isToday, setIsToday] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [saveCount, setSaveCount] = useState(0);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const allEntries = getAllEntries();
@@ -52,7 +49,6 @@ export default function Journal() {
       setContent("");
       setMood(3);
     }
-    setIsLoaded(true);
   }, [currentDate]);
 
   // Auto-save on content change (debounced)
@@ -112,7 +108,6 @@ export default function Journal() {
       // Clear everything after save so user can start fresh
       setContent("");
       setMood(3);
-      setSaveCount((c) => c + 1);
       toast.success("Entry saved", {
         description: "Your thoughts are safe. Start a new entry below.",
         duration: 2000,
